@@ -58,12 +58,11 @@ export default function Page() {
   ];
 
   return (
-    <div className={`min-h-screen bg-gray-950 text-white overflow-hidden ${orbitron.className}`}>
+    <div className={`min-h-screen bg-gray-950 text-white overflow-hidden `}>
       <div className="stars" />
       <div className="twinkling" />
-      <div className="clouds" />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6">
+      <section className={`relative min-h-screen flex items-center justify-center ${orbitron.className} px-6`}>
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-950 to-black opacity-90"></div>
         <div className="absolute inset-0">
           <div className="stars absolute inset-0"></div>

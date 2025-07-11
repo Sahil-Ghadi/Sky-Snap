@@ -83,7 +83,6 @@ export default function Quiz() {
     >
       <div className="stars" />
       <div className="twinkling" />
-      <div className="clouds" />
       <div className=" z-10 bg-[#10172a] p-8 py-5 rounded-3xl h-1/2 w-full max-w-md shadow-xl relative space-y-6">
         <h2 className="text-3xl font-bold my-4 bg-gr text-center tracking-wide">
           SPACE QUIZ
