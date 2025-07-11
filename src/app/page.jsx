@@ -1,3 +1,5 @@
+'use client'
+import LogoLottie from "@/components/LogoLottie";
 import {
   Rocket,
   Globe,
@@ -7,6 +9,14 @@ import {
   Satellite,
   Moon,
 } from "lucide-react";
+import { Orbitron } from "next/font/google";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+const orbitron = Orbitron({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'], // adjust weights you want
+})
 
 export default function Page() {
   const features = [
@@ -48,7 +58,10 @@ export default function Page() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white overflow-hidden">
+    <div className={`min-h-screen bg-gray-950 text-white overflow-hidden ${orbitron.className}`}>
+      <div className="stars" />
+      <div className="twinkling" />
+      <div className="clouds" />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-6">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-950 to-black opacity-90"></div>
@@ -56,13 +69,16 @@ export default function Page() {
           <div className="stars absolute inset-0"></div>
         </div>
 
-        <div className="relative z-10 text-center max-w-4xl mx-auto mb-20">
-          <h1 className="text-4xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-fade-in">
-            Discover the Cosmos
+        <div className="relative z-10 text-center p-4 max-w-3xl mx-auto mb-20">
+          <div className="flex">
+          <LogoLottie/>
+          <h1 className="text-4xl md:text-6xl font-bold mb-7 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-fade-in">
+            Dive into Space with SkySnap
           </h1>
+          </div>
 
           <p
-            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto animate-fade-in"
+            className="text-xl md:text-2xl text-gray-300 mb-7 max-w-6xl mx-auto animate-fade-in"
             style={{ animationDelay: "0.2s" }}
           >
             Explore planets, track space launches, and challenge your knowledge
@@ -73,10 +89,12 @@ export default function Page() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in"
             style={{ animationDelay: "0.4s" }}
           >
+            <Link href="/missions">
             <button className="bg-gradient-to-r lg:w-[250px] from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-lg px-8 py-3 rounded-md text-white justify-center flex items-center transition-colors">
               <Rocket className="mr-2 h-5 w-5" />
               Start Exploring
             </button>
+            </Link>
           </div>
         </div>
       </section>
