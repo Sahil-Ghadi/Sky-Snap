@@ -1,7 +1,11 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono,Orbitron } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
+const orbitron = Orbitron({
+   subsets: ['latin'],
+    weight: ['400', '700'] 
+  })
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
