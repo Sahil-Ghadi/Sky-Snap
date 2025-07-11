@@ -9,27 +9,21 @@ import {
   Satellite,
   Moon,
 } from "lucide-react";
-import { Orbitron } from "next/font/google";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
-const orbitron = Orbitron({
-  subsets: ['latin'],
-  weight: ['400', '600', '700'], // adjust weights you want
-})
 
 export default function Page() {
   const features = [
     {
       icon: Globe,
-      title: "Discover the Cosmos",
+      title: "Discover the Satellites",
       description:
         "Explore breathtaking images of galaxies, nebulae, and cosmic phenomena from across the universe.",
       color: "from-blue-500 to-purple-600",
     },
     {
       icon: Moon,
-      title: "Explore Planets",
+      title: "Explore Stars and Planets",
       description:
         "Journey through our solar system and beyond. Learn about planets, moons, and their unique characteristics.",
       color: "from-purple-500 to-pink-600",
@@ -62,17 +56,17 @@ export default function Page() {
       <div className="stars" />
       <div className="twinkling" />
       {/* Hero Section */}
-      <section className={`relative min-h-screen flex items-center justify-center ${orbitron.className} px-6`}>
+      <section className={`relative min-h-screen flex items-center justify-center px-6`}>
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-950 to-black opacity-90"></div>
         <div className="absolute inset-0">
           <div className="stars absolute inset-0"></div>
         </div>
 
-        <div className="relative z-10 text-center p-4 max-w-3xl mx-auto mb-20">
+        <div className="relative z-10 text-center p-4 max-w-3xl mx-auto mb-16">
           <div className="flex">
           <LogoLottie/>
-          <h1 className="text-4xl md:text-6xl font-bold mb-7 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-fade-in">
-            Dive into Space with SkySnap
+          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent animate-fade-in">
+            Dive Into The Space With Skysnap
           </h1>
           </div>
 
@@ -80,7 +74,7 @@ export default function Page() {
             className="text-xl md:text-2xl text-gray-300 mb-7 max-w-6xl mx-auto animate-fade-in"
             style={{ animationDelay: "0.2s" }}
           >
-            Explore planets, track space launches, and challenge your knowledge
+            Explore stars, track space launches, and challenge your knowledge
             with quizzes in the ultimate space exploration experience.
           </p>
 
@@ -89,7 +83,7 @@ export default function Page() {
             style={{ animationDelay: "0.4s" }}
           >
             <Link href="/missions">
-            <button className="bg-gradient-to-r lg:w-[250px] from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-lg px-8 py-3 rounded-md text-white justify-center flex items-center transition-colors">
+            <button className="bg-gradient-to-r lg:w-[250px] from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-lg px-8 py-3 rounded-2xl text-white justify-center flex items-center transition-colors">
               <Rocket className="mr-2 h-5 w-5" />
               Start Exploring
             </button>
