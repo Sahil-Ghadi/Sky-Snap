@@ -38,25 +38,51 @@ export default function Quiz() {
     setCurrentIndex((prev) => prev + 1);
   };
 
-  if (!current)
-    return (
-      <div className="flex flex-col items-center justify-center h-64 gap-4">
-        <div className="relative">
-          <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500/20 to-blue-500/20 animate-spin"></div>
-          <div className="absolute inset-4 rounded-full bg-gray-950"></div>
+  if (!current) {
+  return (
+    <div className="flex flex-col items-center justify-center h-screen gap-6 bg-gray-950">
+      <div className="relative w-24 h-24">
+        {/* Animated orbiting planets */}
+        <div className="absolute top-0 left-0 right-0 bottom-0 m-auto w-4 h-4 rounded-full bg-purple-500 animate-orbit">
+          <div className="relative">
+            <div className="absolute -top-1 -left-1 w-6 h-6 rounded-full bg-purple-500/20 animate-pulse"></div>
+          </div>
         </div>
-        <p className="text-gray-400">Loading Quiz...</p>
+        
+        {/* Central planet with craters */}
+        <div className="absolute top-0 left-0 right-0 bottom-0 m-auto w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600">
+          <div className="absolute top-2 left-3 w-1 h-1 rounded-full bg-blue-800/70"></div>
+          <div className="absolute bottom-3 right-2 w-2 h-2 rounded-full bg-blue-800/70"></div>
+          <div className="absolute top-1/4 right-1/4 w-1.5 h-1.5 rounded-full bg-blue-800/70"></div>
+        </div>
+        
+        {/* Outer ring with stars */}
+        <div className="absolute top-0 left-0 right-0 bottom-0 m-auto w-20 h-20 rounded-full border border-gray-700/50 animate-spin-slow">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-white"></div>
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-white"></div>
+          <div className="absolute top-1/2 right-0 -translate-y-1/2 w-1 h-1 rounded-full bg-white"></div>
+        </div>
       </div>
-    );
+      
+      <div className="text-center space-y-2">
+        <p className="text-xl font-medium text-gray-300">Launching Space Quiz</p>
+        <p className="text-sm text-gray-500 flex items-center justify-center gap-2">
+          <span className="inline-block w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+          <span>Establishing connection with NASA</span>
+        </p>
+      </div>
+    </div>
+  );
+}
 
   return (
     <div
-      className={`relative min-h-screen overflow-hidden flex items-center justify-center p-4 text-white ${orbitron.className}`}
+      className={`bottom-5 relative min-h-screen overflow-hidden flex items-center justify-center p-4 text-white ${orbitron.className}`}
     >
       <div className="stars" />
       <div className="twinkling" />
       <div className="clouds" />
-      <div className=" z-10 bg-[#10172a] p-8 py-10 rounded-3xl w-full max-w-md shadow-xl relative space-y-10">
+      <div className=" z-10 bg-[#10172a] p-8 py-5 rounded-3xl h-1/2 w-full max-w-md shadow-xl relative space-y-6">
         <h2 className="text-3xl font-bold my-4 bg-gr text-center tracking-wide">
           SPACE QUIZ
         </h2>

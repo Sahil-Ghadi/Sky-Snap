@@ -90,11 +90,11 @@ export default function MissionsPage() {
     <div className="min-h-screen bg-gray-950 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
-        <header className="mb-12 text-center mt-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+        <header className="mb-8 text-center mt-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
             Missions Tracker
           </h1>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-400 max-w-2xl mx-auto">
             Explore launches from NASA, SpaceX, ISRO and other space agencies
             worldwide
           </p>
@@ -130,7 +130,7 @@ export default function MissionsPage() {
             {["all", "success", "failed"].map((f) => (
               <button
                 key={f}
-                className={`px-5 py-2.5 rounded-xl capitalize whitespace-nowrap transition-all duration-200 ${
+                className={`w-full text-center flex px-5 py-2.5 lg:items-center rounded-xl capitalize whitespace-nowrap transition-all duration-200 ${
                   filter === f
                     ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg shadow-purple-500/20"
                     : "bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 backdrop-blur-sm"
@@ -145,12 +145,39 @@ export default function MissionsPage() {
 
         {/* Loading State */}
         {loading && (
-          <div className="flex flex-col items-center justify-center h-64 gap-4">
-            <div className="relative">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500/20 to-blue-500/20 animate-spin"></div>
-              <div className="absolute inset-4 rounded-full bg-gray-950"></div>
+          <div className="flex flex-col items-center justify-center h-64 gap-6 bg-gray-950">
+            <div className="relative w-24 h-24">
+              {/* Animated orbiting planets */}
+              <div className="absolute top-0 left-0 right-0 bottom-0 m-auto w-4 h-4 rounded-full bg-purple-500 animate-orbit">
+                <div className="relative">
+                  <div className="absolute -top-1 -left-1 w-6 h-6 rounded-full bg-purple-500/20 animate-pulse"></div>
+                </div>
+              </div>
+
+              {/* Central planet with craters */}
+              <div className="absolute top-0 left-0 right-0 bottom-0 m-auto w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600">
+                <div className="absolute top-2 left-3 w-1 h-1 rounded-full bg-blue-800/70"></div>
+                <div className="absolute bottom-3 right-2 w-2 h-2 rounded-full bg-blue-800/70"></div>
+                <div className="absolute top-1/4 right-1/4 w-1.5 h-1.5 rounded-full bg-blue-800/70"></div>
+              </div>
+
+              {/* Outer ring with stars */}
+              <div className="absolute top-0 left-0 right-0 bottom-0 m-auto w-20 h-20 rounded-full border border-gray-700/50 animate-spin-slow">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-white"></div>
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-white"></div>
+                <div className="absolute top-1/2 right-0 -translate-y-1/2 w-1 h-1 rounded-full bg-white"></div>
+              </div>
             </div>
-            <p className="text-gray-400">Loading space missions...</p>
+
+            <div className="text-center space-y-2">
+              <p className="text-xl font-medium text-gray-300">
+                Tracking Space Missions
+              </p>
+              <p className="text-sm text-gray-500 flex items-center justify-center gap-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                <span>Establishing connection with NASA</span>
+              </p>
+            </div>
           </div>
         )}
 
@@ -185,7 +212,7 @@ export default function MissionsPage() {
             {filteredMissions.map((mission) => (
               <div
                 key={mission.id}
-                className="group relative bg-gray-900 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-800 hover:border-purple-500/30 cursor-pointer"
+                className="group relative bg-gray-900 rounded-sm overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-800 hover:border-purple-500/30 cursor-pointer"
                 onClick={() => setSelectedMission(mission)}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent z-10 pointer-events-none"></div>
