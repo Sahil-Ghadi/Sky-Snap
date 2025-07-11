@@ -213,7 +213,7 @@ export default function Navbar() {
                 isActive("/news") ? "text-purple-400" : "text-blue-400"
               }`}
             />
-            Space Quiz
+            Space News
           </Link>
         </div>
       </div>
