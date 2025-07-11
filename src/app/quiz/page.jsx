@@ -31,11 +31,11 @@ export default function Quiz() {
         Question {currentIndex + 1}
       </h2>
 
-      <p className="mb-6 text-lg">{current.question}</p>
+      <p className="mb-6 text-lg">{current?.question}</p>
 
       <ul className="space-y-4">
-        {current.options.map((opt, i) => {
-          const isCorrect = opt === current.answer
+        {current?.options.map((opt, i) => {
+          const isCorrect = opt === current?.answer
           const isSelected = opt === selected
 
           return (
@@ -53,7 +53,7 @@ export default function Quiz() {
           )
         })}
       </ul>
-{/* 
+
       {showAnswer && currentIndex < quiz.length - 1 && (
         <button
           onClick={handleNext}
@@ -61,7 +61,7 @@ export default function Quiz() {
         >
           Next Question →
         </button>
-      )} */}
+      )}
 
       {showAnswer && currentIndex === quiz.length - 1 && (
         <p className="mt-6 font-semibold text-green-400">
