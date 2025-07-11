@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { FaSatelliteDish } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 import {
   FiCompass,
@@ -131,6 +132,23 @@ export default function Navbar() {
               />
               <span className="whitespace-nowrap">Stars Tracker</span>
             </Link>
+            <Link
+              href="/satellite-tracker"
+              className={`flex items-center px-3 py-2 text-sm font-medium rounded-md group transition-colors duration-200 hover:bg-gray-800/50 ${
+                isActive("/satellite-tracker")
+                  ? "text-purple-400"
+                  : "text-gray-300 hover:text-white"
+              }`}
+            >
+              <FaSatelliteDish
+                className={`flex-shrink-0 h-5 w-5 mr-3 transition-colors duration-200 ${
+                  isActive("/satellite-tracker")
+                    ? "text-purple-400"
+                    : "text-blue-400 group-hover:text-blue-300"
+                }`}
+              />
+              <span className="whitespace-nowrap">Satellites Tracker</span>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -199,6 +217,21 @@ export default function Navbar() {
               }`}
             />
             Space Quiz
+          </Link>
+
+          <Link
+            href="/satellite-tracker"
+            onClick={closeMobileMenu}
+            className={`flex items-center px-3 py-3 text-base font-medium rounded-md hover:text-white hover:bg-gray-800/50 w-full ${
+              isActive("/satellite-tracker") ? "text-purple-400" : "text-gray-300"
+            }`}
+          >
+            <FiAward
+              className={`mr-3 ${
+                isActive("/satellite-tracker") ? "text-purple-400" : "text-blue-400"
+              }`}
+            />
+            Satellites Tracker
           </Link>
 
           <Link
