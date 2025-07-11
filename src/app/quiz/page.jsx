@@ -1,73 +1,96 @@
 'use client'
 
-import { delay } from 'framer-motion'
+import { Orbitron } from 'next/font/google'
+import PlanetLottie from '@/components/PlanetLottie'
+import RocketLottie from '@/components/RocketLottie'
 import { useEffect, useState } from 'react'
 
+const orbitron = Orbitron({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'], // adjust weights you want
+})
 export default function Quiz() {
-  const [quiz, setQuiz] = useState([])
-  const [currentIndex, setCurrentIndex] = useState(0) 
+  const [questions, setQuestions] = useState([])
+  const [currentIndex, setCurrentIndex] = useState(0)
   const [selected, setSelected] = useState(null)
-  const [showAnswer, setShowAnswer] = useState(false)
+  const [showNext, setShowNext] = useState(false)
 
   useEffect(() => {
-    const fetchQuiz = async () => {
+    const fetchData = async () => {
       const res = await fetch('/api/quiz')
       const data = await res.json()
-      console.log(data.quiz);
-      setQuiz(data.quiz)
-     }
-    fetchQuiz()
+      setQuestions(data.quiz || [])
+    }
+
+    fetchData()
   }, [])
 
-  const current = quiz[currentIndex]
-  console.log(current);
+  const current = questions[currentIndex]
+
   const handleOptionClick = (option) => {
     setSelected(option)
-    setShowAnswer(true)
+    setShowNext(true)
   }
+
+  const handleNext = () => {
+    setSelected(null)
+    setShowNext(false)
+    setCurrentIndex((prev) => prev + 1)
+  }
+
+  if (!current) return <p className="text-white text-center">Loading...</p>
+
   return (
-     <div className="max-w-xl mx-auto p-6 text-white">
-      <h2 className="text-xl md:text-2xl font-semibold mb-4">
-        Question {currentIndex + 1}
-      </h2>
+    <div className={`relative min-h-screen overflow-hidden flex items-center justify-center p-4 text-white ${orbitron.className}`}>
+      <div className="stars" />
+      <div className="twinkling" />
+      <div className="clouds" />
+      <div className=" z-10 bg-[#10172a] p-8 py-10 rounded-3xl w-full max-w-md shadow-xl relative space-y-10">
+        <h2 className="text-3xl font-bold my-4 bg-gr text-center tracking-wide">SPACE QUIZ</h2>
 
-      <p className="mb-6 text-lg">{current.question}</p>
+        <p className="text-center text-lg pt-2 font-medium">{current.question}</p>
 
-      <ul className="space-y-4">
-        {current.options.map((opt, i) => {
-          const isCorrect = opt === current.answer
-          const isSelected = opt === selected
+        <div className="space-y-2.5">
+          {current.options.map((opt, i) => {
+             const isCorrect = opt === current.answer
+             const isSelected = opt === selected
+             let bgColor = 'bg-[#1E2A47] hover:bg-[#293b66]'
 
-          return (
-            <li
+             if(selected){
+              if(isSelected && isCorrect) bgColor = 'bg-green-600'
+              else if (isSelected && !isCorrect) bgColor = 'bg-red-600'
+              else if (!isSelected && isCorrect) bgColor = 'bg-gray-600'
+              else bgColor = 'bg-[#1E2A47]'
+             }return(
+            <button
               key={i}
-              className={`p-3 border rounded-lg cursor-pointer transition
-                ${showAnswer && isCorrect ? 'bg-green-500/70' : ''}
-                ${showAnswer && isSelected && !isCorrect ? 'bg-red-500/70' : ''}
-                ${!showAnswer ? 'hover:bg-white/10' : ''}
-              `}
-              onClick={() => !showAnswer && handleOptionClick(opt)}
+              className={`w-sm pl-4 py-3 rounded-lg text-left transition
+                ${bgColor}`}
+              onClick={() => handleOptionClick(opt)}
+              disabled={!!selected}
             >
               {opt}
-            </li>
-          )
-        })}
-      </ul>
-{/* 
-      {showAnswer && currentIndex < quiz.length - 1 && (
-        <button
-          onClick={handleNext}
-          className="mt-6 bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg transition"
-        >
-          Next Question →
-        </button>
-      )} */}
+            </button>
+             )
+          })}
+        </div>
 
-      {showAnswer && currentIndex === quiz.length - 1 && (
-        <p className="mt-6 font-semibold text-green-400">
-          🎉 You’ve completed the quiz!
-        </p>
-      )}
+          <div className='flex justify-center mt-3'>
+          <button
+            className="w-3xs mt-3 text-center  bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-lg transition"
+            onClick={handleNext}
+          >
+            Next
+          </button>
+          </div>
+
+        <div className="absolute bottom-[-20px] left-[-40px] w-12">
+          <RocketLottie/>
+        </div>
+        <div className="absolute top-[-20px] right-[30px] w-12">
+          <PlanetLottie/>
+        </div>
+      </div>
     </div>
   )
 }
