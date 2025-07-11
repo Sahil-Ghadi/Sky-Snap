@@ -62,7 +62,7 @@ export default function MissionsPage() {
     };
     return (
       <span
-        className={`px-3 py-1 rounded-full text-xs font-semibold ${statusInfo.color} backdrop-blur-sm`}
+        className={`px-3 py-1 rounded-xl text-sm font-semibold ${statusInfo.color} backdrop-blur-sm`}
       >
         {statusInfo.text}
       </span>
@@ -236,7 +236,7 @@ export default function MissionsPage() {
                   </div>
 
                   <div className="flex items-center gap-2 text-gray-400 mb-4 text-sm">
-                    <span>{mission.launch_service_provider.name}</span>
+                    <span className="font-bold ">{mission.launch_service_provider.name}</span>
                     <span className="text-xs">•</span>
                     <span>{formatDate(mission.net)}</span>
                   </div>
