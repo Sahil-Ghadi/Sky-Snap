@@ -1,9 +1,16 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FiCompass, FiMapPin, FiMenu, FiX, FiAward } from "react-icons/fi";
+import {
+  FiCompass,
+  FiMapPin,
+  FiMenu,
+  FiX,
+  FiAward,
+  FiBookOpen,
+} from "react-icons/fi";
 import { Telescope } from "lucide-react";
 
 export default function Navbar() {
@@ -29,59 +36,100 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b-1 border-blue-400 ${
-      isScrolled ? "bg-gray-900/95 backdrop-blur-md border-b " : "bg-gray-900/80 backdrop-blur-md"
-    }`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b-1 border-blue-400 ${
+        isScrolled
+          ? "bg-gray-900/95 backdrop-blur-md border-b "
+          : "bg-gray-900/80 backdrop-blur-md"
+      }`}
+    >
       <div className="max-w-screen mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="flex items-center space-x-2 group"
             onClick={closeMobileMenu}
           >
-              <Telescope className="h-6 w-6 text-blue-400" />
-              <span className={`text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent ${
+            <Telescope className="h-6 w-6 text-blue-400" />
+            <span
+              className={`text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent ${
                 isActive("/") ? "" : ""
-              }`}>
-                SkySnap
-              </span>
+              }`}
+            >
+              SkySnap
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-6 ">
             <Link
               href="/quiz"
               className={`flex items-center px-3 py-2 text-sm font-medium rounded-md group transition-colors duration-200 hover:bg-gray-800/50 ${
-                isActive("/quiz") ? "text-purple-400" : "text-gray-300 hover:text-white"
+                isActive("/quiz")
+                  ? "text-purple-400"
+                  : "text-gray-300 hover:text-white"
               }`}
             >
-              <FiAward className={`mr-2 transition-colors duration-200 ${
-                isActive("/quiz") ? "text-purple-400" : "text-blue-400 group-hover:text-blue-300"
-              }`} />
-              <span>Space Quiz</span>
+              <FiAward
+                className={`flex-shrink-0 h-5 w-5 mr-3 transition-colors duration-200 ${
+                  isActive("/quiz")
+                    ? "text-purple-400"
+                    : "text-blue-400 group-hover:text-blue-300"
+                }`}
+              />
+              <span className="whitespace-nowrap">Space Quiz</span>
+            </Link>
+            <Link
+              href="/news"
+              className={`flex items-center px-3 py-2 text-sm font-medium rounded-md group transition-colors duration-200 hover:bg-gray-800/50 ${
+                isActive("/news")
+                  ? "text-purple-400"
+                  : "text-gray-300 hover:text-white"
+              }`}
+            >
+              <FiBookOpen
+                className={`flex-shrink-0 h-5 w-5 mr-3 transition-colors duration-200 ${
+                  isActive("/news")
+                    ? "text-purple-400"
+                    : "text-blue-400 group-hover:text-blue-300"
+                }`}
+              />
+              <span className="whitespace-nowrap">Space News</span>
             </Link>
             <Link
               href="/missions"
               className={`flex items-center px-3 py-2 text-sm font-medium rounded-md group transition-colors duration-200 hover:bg-gray-800/50 ${
-                isActive("/missions") ? "text-purple-400" : "text-gray-300 hover:text-white"
+                isActive("/missions")
+                  ? "text-purple-400"
+                  : "text-gray-300 hover:text-white"
               }`}
             >
-              <FiCompass className={`mr-2 transition-colors duration-200 ${
-                isActive("/missions") ? "text-purple-400" : "text-blue-400 group-hover:text-blue-300"
-              }`} />
-              <span>Missions Tracker</span>
+              <FiCompass
+                className={`flex-shrink-0 h-5 w-5 mr-3 transition-colors duration-200 ${
+                  isActive("/missions")
+                    ? "text-purple-400"
+                    : "text-blue-400 group-hover:text-blue-300"
+                }`}
+              />
+              <span className="whitespace-nowrap">Missions Tracker</span>
             </Link>
             <Link
               href="/star-tracker"
               className={`flex items-center px-3 py-2 text-sm font-medium rounded-md group transition-colors duration-200 hover:bg-gray-800/50 ${
-                isActive("/star-tracker") ? "text-purple-400" : "text-gray-300 hover:text-white"
+                isActive("/star-tracker")
+                  ? "text-purple-400"
+                  : "text-gray-300 hover:text-white"
               }`}
             >
-              <FiMapPin className={`mr-2 transition-colors duration-200 ${
-                isActive("/star-tracker") ? "text-purple-400" : "text-purple-400 group-hover:text-purple-300"
-              }`} />
-              <span>Stars Tracker</span>
+              <FiMapPin
+                className={`flex-shrink-0 h-5 w-5 mr-3 transition-colors duration-200 ${
+                  isActive("/star-tracker")
+                    ? "text-purple-400"
+                    : "text-blue-400 group-hover:text-blue-300"
+                }`}
+              />
+              <span className="whitespace-nowrap">Stars Tracker</span>
             </Link>
           </div>
 
@@ -103,9 +151,11 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-        isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-      }`}>
+      <div
+        className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
+          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
         <div className="px-2 pt-2 pb-3 space-y-1">
           <Link
             href="/missions"
@@ -114,9 +164,11 @@ export default function Navbar() {
               isActive("/missions") ? "text-purple-400" : "text-gray-300"
             }`}
           >
-            <FiCompass className={`mr-3 ${
-              isActive("/missions") ? "text-purple-400" : "text-blue-400"
-            }`} />
+            <FiCompass
+              className={`mr-3 ${
+                isActive("/missions") ? "text-purple-400" : "text-blue-400"
+              }`}
+            />
             Missions
           </Link>
           <Link
@@ -126,11 +178,14 @@ export default function Navbar() {
               isActive("/star-tracker") ? "text-purple-400" : "text-gray-300"
             }`}
           >
-            <FiMapPin className={`mr-3 ${
-              isActive("/star-tracker") ? "text-purple-400" : "text-purple-400"
-            }`} />
+            <FiMapPin
+              className={`mr-3 ${
+                isActive("/star-tracker") ? "text-purple-400" : "text-blue-400"
+              }`}
+            />
             Star Tracker
           </Link>
+
           <Link
             href="/quiz"
             onClick={closeMobileMenu}
@@ -138,9 +193,26 @@ export default function Navbar() {
               isActive("/quiz") ? "text-purple-400" : "text-gray-300"
             }`}
           >
-            <FiAward className={`mr-3 ${
-              isActive("/quiz") ? "text-purple-400" : "text-blue-400"
-            }`} />
+            <FiAward
+              className={`mr-3 ${
+                isActive("/quiz") ? "text-purple-400" : "text-blue-400"
+              }`}
+            />
+            Space Quiz
+          </Link>
+
+          <Link
+            href="/news"
+            onClick={closeMobileMenu}
+            className={`flex items-center px-3 py-3 text-base font-medium rounded-md hover:text-white hover:bg-gray-800/50 w-full ${
+              isActive("/news") ? "text-purple-400" : "text-gray-300"
+            }`}
+          >
+            <FiBookOpen
+              className={`mr-3 ${
+                isActive("/news") ? "text-purple-400" : "text-blue-400"
+              }`}
+            />
             Space Quiz
           </Link>
         </div>
