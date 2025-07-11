@@ -54,39 +54,6 @@ export default function Page() {
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-950 to-black opacity-90"></div>
         <div className="absolute inset-0">
           <div className="stars absolute inset-0"></div>
-          <div className="shooting-star absolute top-1/4 left-1/4 w-2 h-2 bg-white rounded-full opacity-0 animate-pulse"></div>
-          <div
-            className="shooting-star absolute top-1/3 right-1/3 w-2 h-2 bg-blue-400 rounded-full opacity-0 animate-pulse"
-            style={{ animationDelay: "2s" }}
-          ></div>
-          <div
-            className="shooting-star absolute top-[15%] left-[70%] w-1 h-1 bg-yellow-300 rounded-full opacity-0 animate-pulse"
-            style={{ animationDelay: "1.5s" }}
-          ></div>
-          <div
-            className="shooting-star absolute top-[65%] left-[15%] w-3 h-3 bg-cyan-300 rounded-full opacity-0 animate-pulse"
-            style={{ animationDelay: "3s" }}
-          ></div>
-          <div
-            className="shooting-star absolute top-[40%] left-[85%] w-1.5 h-1.5 bg-pink-300 rounded-full opacity-0 animate-pulse"
-            style={{ animationDelay: "0.5s" }}
-          ></div>
-          <div
-            className="shooting-star absolute top-[75%] left-[60%] w-2.5 h-2.5 bg-orange-300 rounded-full opacity-0 animate-pulse"
-            style={{ animationDelay: "2.5s" }}
-          ></div>
-          <div
-            className="shooting-star absolute top-[55%] left-[30%] w-1 h-1 bg-green-300 rounded-full opacity-0 animate-pulse"
-            style={{ animationDelay: "1s" }}
-          ></div>
-          <div
-            className="shooting-star absolute top-[5%] left-[40%] w-2 h-2 bg-indigo-300 rounded-full opacity-0 animate-pulse"
-            style={{ animationDelay: "3.5s" }}
-          ></div>
-          <div
-            className="shooting-star absolute bottom-1/3 left-1/2 w-2 h-2 bg-purple-400 rounded-full opacity-0 animate-pulse"
-            style={{ animationDelay: "4s" }}
-          ></div>
         </div>
 
         <div className="relative z-10 text-center max-w-4xl mx-auto mb-20">

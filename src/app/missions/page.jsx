@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { FiCrosshair } from "react-icons/fi";
 
 export default function MissionsPage() {
   const [missions, setMissions] = useState([]);
@@ -89,7 +90,7 @@ export default function MissionsPage() {
     <div className="min-h-screen bg-gray-950 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
-        <header className="mb-12 text-center">
+        <header className="mb-12 text-center mt-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
             Missions Tracker
           </h1>
@@ -126,7 +127,7 @@ export default function MissionsPage() {
             />
           </div>
           <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-            {["all", "upcoming", "success", "failed"].map((f) => (
+            {["all", "success", "failed"].map((f) => (
               <button
                 key={f}
                 className={`px-5 py-2.5 rounded-xl capitalize whitespace-nowrap transition-all duration-200 ${
